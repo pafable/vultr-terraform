@@ -26,3 +26,12 @@ data "vultr_os" "my_os" {
     ]
   }
 }
+
+data "vultr_ssh_key" "my_ssh_key" {
+  filter {
+    name = "name"
+    values = [
+      "${var.ssh_key}"
+    ]
+  }
+}

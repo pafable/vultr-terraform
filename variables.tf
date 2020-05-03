@@ -15,3 +15,9 @@ variable "os" {
     default = "CentOS 7 x64"
     description = "OS version"
 }
+
+variable "ssh_key" {
+    type = string
+    default = "jenkins"
+    description = "Jenkins SSH key"
+}

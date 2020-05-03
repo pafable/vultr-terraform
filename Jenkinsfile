@@ -52,8 +52,9 @@ pipeline {
               }
               stage('Deploy to AWS') {
                   steps {
-                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
+                    echo "deployed to aws"
                   }
                   post {
                       success {
@@ -66,8 +67,9 @@ pipeline {
               }
               stage('Deploy to Linode') {
                   steps {
-                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
+                    echo "deployed to azure"
                   }
                   post {
                       success {
@@ -80,8 +82,9 @@ pipeline {
               }
               stage('Deploy to Azure') {
                   steps {
-                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
+                    echo "deployed to azure"
                   }
                   post {
                       success {

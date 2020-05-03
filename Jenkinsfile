@@ -41,28 +41,12 @@ pipeline {
                       sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
                   }
-                  post {
-                      success {
-                          echo "yo it succeeded!"
-                      }
-                      failure {
-                          echo "it failed dog!"
-                      }
-                  }
               }
               stage('AWS') {
                   steps {
                     //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
                     echo "deployed to aws"
-                  }
-                  post {
-                      success {
-                          echo "yo it succeeded!"
-                      }
-                      failure {
-                          echo "it failed dog!"
-                      }
                   }
               }
               stage('Linode') {
@@ -71,14 +55,6 @@ pipeline {
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
                     echo "deployed to linode"
                   }
-                  post {
-                      success {
-                          echo "yo it succeeded!"
-                      }
-                      failure {
-                          echo "it failed dog!"
-                      }
-                  }
               }
               stage('Azure') {
                   steps {
@@ -86,40 +62,17 @@ pipeline {
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
                     echo "deployed to azure"
                   }
-                  post {
-                      success {
-                          echo "yo it succeeded!"
-                      }
-                      failure {
-                          echo "it failed dog!"
-                      }
-                  }
               }
           }
       }
+
+    post {
+        success {
+            echo "yo it succeeded!"
+        }
+        failure {
+            echo "it failed dog!"
+        }
+    }   
    }
 }
-    //       steps {
-    //           dir("${env.WORKSPACE}") {
-    //             parallel {
-    //                 stage('Deploying Vultr') {
-    //                     sh("whoami")
-    //                     sh("/usr/local/bin/terraform destroy -auto-approve")
-    //                     // sh("/usr/local/bin/terraform apply -auto-approve")
-    //                 }
-    //                 stage('Deploying to AWS') {
-    //                     echo "deployed to aws"
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-//    post {
-//        success {
-//            echo "yo it succeeded!"
-//        }
-//        failure {
-//            echo "yo this failed!"
-//        }
-//    }

@@ -34,9 +34,9 @@ pipeline {
           }
       }
 
-      stage('Deploying...') {
+      stage('Deploying to...') {
           parallel {
-              stage('Deploy to Vultr') {
+              stage('Vultr') {
                   steps {
                       sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
@@ -50,7 +50,7 @@ pipeline {
                       }
                   }
               }
-              stage('Deploy to AWS') {
+              stage('AWS') {
                   steps {
                     //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
@@ -65,11 +65,11 @@ pipeline {
                       }
                   }
               }
-              stage('Deploy to Linode') {
+              stage('Linode') {
                   steps {
                     //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
-                    echo "deployed to azure"
+                    echo "deployed to linode"
                   }
                   post {
                       success {
@@ -80,7 +80,7 @@ pipeline {
                       }
                   }
               }
-              stage('Deploy to Azure') {
+              stage('Azure') {
                   steps {
                     //   sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")

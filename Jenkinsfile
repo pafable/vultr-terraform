@@ -64,6 +64,7 @@ pipeline {
                   }
               }
           }
+      }
 
       stage('Testing deployment') {
           steps {

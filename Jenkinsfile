@@ -8,7 +8,7 @@ pipeline {
    stages {
       stage('Terraform Check') {
           steps {
-              dir('terraform') {
+              dir("${env.WORKSPACE}") {
                   sh("/usr/local/bin/terraform init")
                   sh("/usr/local/bin/terraform plan")
               }
@@ -36,7 +36,7 @@ pipeline {
 
       stage('Terraform Deploy') {
           steps {
-              dir('terraform') {
+              dir("${env.WORKSPACE}") {
                 sh("whoami")
                 // sh("/usr/local/bin/terraform destroy -auto-approve")
                 sh("/usr/local/bin/terraform apply -auto-approve")

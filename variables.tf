@@ -21,3 +21,21 @@ variable "ssh_key" {
     default = "jenkins"
     description = "Jenkins SSH key"
 }
+
+variable "instance_label" {
+  type = string
+  default = "test-instance"
+  description = "My test instance"
+}
+
+variable "instance_tag" {
+    type = string
+    default = "test"
+    description = "Test tag"
+}
+
+variable "instance_hostname" {
+  type = string
+  default = "test-instance-hostname"
+  description = "instance hostname"
+}

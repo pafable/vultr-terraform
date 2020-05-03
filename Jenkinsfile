@@ -11,13 +11,7 @@ pipeline {
               dir("${env.WORKSPACE}") {
                   sh("/usr/local/bin/terraform init")
                   sh("/usr/local/bin/terraform plan")
-              }
-          steps {
-              sh("echo hello")
-          }
-          steps {
-              sh("echo dude")
-          }         
+              }       
           }
       }
 

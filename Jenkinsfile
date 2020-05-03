@@ -34,16 +34,22 @@ pipeline {
           }
       }
 
-      stage('Terraform Deploy') {
+      stage('Deploying...') {
           steps {
               dir("${env.WORKSPACE}") {
-                sh("whoami")
-                // sh("/usr/local/bin/terraform destroy -auto-approve")
-                sh("/usr/local/bin/terraform apply -auto-approve")
-              }
-          }
-      }
-   }
+                parallel {
+                    stage('Deploying Vultr') {
+                        sh("whoami")
+                        sh("/usr/local/bin/terraform destroy -auto-approve")
+                        // sh("/usr/local/bin/terraform apply -auto-approve")
+                    }
+                    stage('Deploying to AWS') {
+                        echo "deployed to aws"
+                    }
+                }
+            }
+        }
+    }
 
    post {
        success {

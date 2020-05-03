@@ -37,9 +37,6 @@ pipeline {
       stage('Deploying...') {
           parallel {
               stage('Deploy to Vultr') {
-                  agent {
-                      label "vultr"
-                  }
                   steps {
                       sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")
@@ -54,9 +51,34 @@ pipeline {
                   }
               }
               stage('Deploy to AWS') {
-                  agent {
-                      label "aws"
+                  steps {
+                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform apply -auto-approve")
                   }
+                  post {
+                      success {
+                          echo "yo it succeeded!"
+                      }
+                      failure {
+                          echo "it failed dog!"
+                      }
+                  }
+              }
+              stage('Deploy to Linode') {
+                  steps {
+                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform apply -auto-approve")
+                  }
+                  post {
+                      success {
+                          echo "yo it succeeded!"
+                      }
+                      failure {
+                          echo "it failed dog!"
+                      }
+                  }
+              }
+              stage('Deploy to Azure') {
                   steps {
                       sh("/usr/local/bin/terraform destroy -auto-approve")
                     //   sh("/usr/local/bin/terraform apply -auto-approve")

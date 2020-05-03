@@ -13,8 +13,11 @@ pipeline {
                   sh("/usr/local/bin/terraform plan")
               }
           steps {
-              sh("echo 'this is a test'")
+              sh("echo hello")
           }
+          steps {
+              sh("echo dude")
+          }         
           }
       }
 

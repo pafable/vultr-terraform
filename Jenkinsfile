@@ -2,7 +2,7 @@ pipeline {
    agent any
 
    environment {
-       VULTR_API_KEY = credentials('YOUR-VULTR-API')
+       VULTR_API_KEY = credentials('VULTR-API-KEY')
    }
 
    stages {

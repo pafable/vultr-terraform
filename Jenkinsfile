@@ -64,15 +64,13 @@ pipeline {
                   }
               }
           }
-          post {
-              success {
-                  echo "yo it succeeded!"
-              }
-              failure {
-                  echo "it failed dog!"
-              }
-          }           
-      }
+
+      stage('Testing deployment') {
+          steps {
+              echo "Running tests..."
+          }    
+      }   
+    }
 
     //   post {
     //       success {

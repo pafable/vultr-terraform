@@ -78,6 +78,20 @@ pipeline {
                       }
                   }
               }
+              stage('Deploy to Azure') {
+                  steps {
+                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform apply -auto-approve")
+                  }
+                  post {
+                      success {
+                          echo "yo it succeeded!"
+                      }
+                      failure {
+                          echo "it failed dog!"
+                      }
+                  }
+              }
           }
       }
    }

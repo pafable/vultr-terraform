@@ -35,28 +35,66 @@ pipeline {
       }
 
       stage('Deploying...') {
-          steps {
-              dir("${env.WORKSPACE}") {
-                parallel {
-                    stage('Deploying Vultr') {
-                        sh("whoami")
-                        sh("/usr/local/bin/terraform destroy -auto-approve")
-                        // sh("/usr/local/bin/terraform apply -auto-approve")
-                    }
-                    stage('Deploying to AWS') {
-                        echo "deployed to aws"
-                    }
-                }
-            }
-        }
-    }
-
-   post {
-       success {
-           echo "yo it succeeded!"
-       }
-       failure {
-           echo "yo this failed!"
-       }
+          parallel {
+              stage('Deploy to Vultr') {
+                  agent {
+                      label "vultr"
+                  }
+                  steps {
+                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform apply -auto-approve")
+                  }
+                  post {
+                      success {
+                          echo "yo it succeeded!"
+                      }
+                      failure {
+                          echo "it failed dog!"
+                      }
+                  }
+              }
+              stage('Deploy to AWS') {
+                  agent {
+                      label "aws"
+                  }
+                  steps {
+                      sh("/usr/local/bin/terraform destroy -auto-approve")
+                    //   sh("/usr/local/bin/terraform apply -auto-approve")
+                  }
+                  post {
+                      success {
+                          echo "yo it succeeded!"
+                      }
+                      failure {
+                          echo "it failed dog!"
+                      }
+                  }
+              }
+          }
+      }
    }
 }
+    //       steps {
+    //           dir("${env.WORKSPACE}") {
+    //             parallel {
+    //                 stage('Deploying Vultr') {
+    //                     sh("whoami")
+    //                     sh("/usr/local/bin/terraform destroy -auto-approve")
+    //                     // sh("/usr/local/bin/terraform apply -auto-approve")
+    //                 }
+    //                 stage('Deploying to AWS') {
+    //                     echo "deployed to aws"
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+//    post {
+//        success {
+//            echo "yo it succeeded!"
+//        }
+//        failure {
+//            echo "yo this failed!"
+//        }
+//    }

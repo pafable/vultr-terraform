@@ -38,8 +38,8 @@ pipeline {
             parallel {
                 stage('Vultr') {
                     steps {
-                        sh("/usr/local/bin/terraform destroy -auto-approve")
-                    //   sh("/usr/local/bin/terraform apply -auto-approve")
+                        // sh("/usr/local/bin/terraform destroy -auto-approve")
+                        sh("/usr/local/bin/terraform apply -auto-approve")
                     }
                 }
                 stage('AWS') {

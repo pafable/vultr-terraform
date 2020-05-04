@@ -82,11 +82,3 @@ pipeline {
         }
     }
 }
-    //   post {
-    //       success {
-    //           echo "yo it succeeded!"
-    //       }
-    //       failure {
-    //           echo "it failed dog!"
-    //       }
-    //   }   

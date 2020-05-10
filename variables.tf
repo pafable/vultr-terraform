@@ -30,7 +30,7 @@ variable "instance_label" {
 
 variable "instance_tag" {
     type = string
-    default = "test"
+    default = "prod"
     description = "Test tag"
 }
 

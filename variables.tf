@@ -12,7 +12,7 @@ variable "plan" {
 
 variable "os" {
     type = string
-    default = "CentOS 7 x64"
+    default = "Ubuntu 16.04 x64"
     description = "OS version"
 }
 

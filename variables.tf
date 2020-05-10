@@ -24,7 +24,7 @@ variable "ssh_key" {
 
 variable "instance_label" {
   type = string
-  default = "test-instance"
+  default = "spinnaker instance"
   description = "My test instance"
 }
 
@@ -36,6 +36,6 @@ variable "instance_tag" {
 
 variable "instance_hostname" {
   type = string
-  default = "test-instance-hostname"
+  default = "nj-spinnaker-01"
   description = "instance hostname"
 }

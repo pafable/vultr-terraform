@@ -6,7 +6,7 @@ variable "region" {
 
 variable "plan" {
     type = string
-    default = "2048 MB RAM, 55 GB SSD, 2.00 TB BW"
+    default = "2048 MB RAM,55 GB SSD,2.00 TB BW"
     description = "Default plan"
 }
 
